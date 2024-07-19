@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Item Deletion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        .confirmation-box {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .confirmation-box h1 {
+            margin-top: 0;
+            font-size: 24px;
+        }
+        .confirmation-box p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .confirmation-box form {
+            margin-top: 10px;
+        }
+        .confirmation-box form button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #f44336;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .confirmation-box form button:hover {
+            background-color: #d32f2f;
+        }
+        .cancel-link {
+            display: block;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="confirmation-box">
+        <h1>Confirm Item Deletion</h1>
+        <p>Are you sure you want to delete "{{ item.name }}"?</p>
+        
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Delete</button>
+        </form>
+        
+        <a href="{% url 'item_list' %}" class="cancel-link">Cancel</a>
+    </div>
+</body>
+</html>
